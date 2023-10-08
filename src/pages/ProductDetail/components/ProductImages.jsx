@@ -1,17 +1,15 @@
 import React from 'react';
 import './ProductImages.scss';
 
-const ProductImages = ({ key, productImages }) => {
+const ProductImages = ({ productImages }) => {
   return (
-    <div className="productImageAll" key={key}>
+    <div className="productImageAll">
       <div className="productImage">
         <img
           src={productImages?.[0] || '/images/bg-white.jpg'}
           alt="제품 1번째 사진"
         />
       </div>
-      {/*"/images/desk.jpg"*/}
-      {/*"/images/벤치의자.png"*/}
       <div className="productImage">
         <img
           src={productImages?.[1] || '/images/bg-white.jpg'}

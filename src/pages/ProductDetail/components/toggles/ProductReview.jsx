@@ -12,16 +12,34 @@ const ProductReview = ({ key, apiUrl }) => {
     const { value } = event.target;
     setNewReviewPost(value);
   };
-  const reviewValidation = newReview.trim() === '' ? true : false;
+  const reviewValidation = newReview.trim() === '';
 
-  //상품평 작성 통신
+  // const reviewList = () => {
+  //   useEffect(() => {
+  //     fetch(`${apiUrl}/allreviewList/${id}`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json;charset=utf-8',
+  //         authorization: localStorage.getItem('TOKEN'),
+  //       },
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         setReviewData(data.data);
+  //         const sortedPosts = data.data.sort((a, b) => {
+  //           return new Date(b.createdAt) - new Date(a.createdAt);
+  //         });
+  //         if (data.message === 'success') setReviewData(sortedPosts);
+  //       });
+  //   }, []);
+  // };
+
   const reviewWrite = () => {
     fetch(`${apiUrl}/reviews/${id}`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization: localStorage.getItem('TOKEN'),
-        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
       },
       body: JSON.stringify({
         key: key,
@@ -35,26 +53,6 @@ const ProductReview = ({ key, apiUrl }) => {
     setNewReviewPost('');
   };
 
-  //상품평 리스트 보여주기만 통신
-  useEffect(() => {
-    fetch(`${apiUrl}/allreviewList/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        setReviewData(data.data);
-        const sortedPosts = data.data.sort((a, b) => {
-          return new Date(b.createdAt) - new Date(a.createdAt);
-        });
-        setReviewData(sortedPosts);
-      });
-  }, []);
-
   return (
     <div className="productReview ">
       <h1>상품평</h1>
@@ -65,7 +63,13 @@ const ProductReview = ({ key, apiUrl }) => {
         }}
       >
         {isPoductReview ? (
-          <button disabled={reviewValidation} onClick={reviewWrite}>
+          <button
+            disabled={reviewValidation}
+            onClick={() => {
+              reviewWrite();
+              // reviewList();
+            }}
+          >
             <p>상품평 제출</p>
           </button>
         ) : (

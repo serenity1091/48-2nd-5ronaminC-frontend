@@ -12,17 +12,14 @@ const UserInfoList = ({ userInfoData, apiUrl }) => {
   const arrproductId = userInfoData.map(num => {
     return num.productId;
   });
-  console.log(arrproductId);
 
   const arrproductQuantity = userInfoData.map(num => {
     return num.productQuantity;
   });
-  console.log(arrproductQuantity);
 
   const arrsubtotalPrice = userInfoData.map(num => {
     return num.subtotalPrice;
   });
-  console.log(arrsubtotalPrice);
 
   const CompletePayment = id => {
     fetch(`${apiUrl}/orders/payment`, {

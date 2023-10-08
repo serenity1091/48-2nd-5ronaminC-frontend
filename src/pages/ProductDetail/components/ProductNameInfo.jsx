@@ -47,7 +47,7 @@ const ProductNameInfo = ({ productDetailData, apiUrl }) => {
     setProductCount(productCount - 1);
   };
 
-  //찜하기 통신 - post
+  //찜하기 통신
   const likeHandling = () => {
     fetch('api', {
       method: 'POST',
@@ -59,7 +59,6 @@ const ProductNameInfo = ({ productDetailData, apiUrl }) => {
     }).then(res => res.json());
   };
 
-  //장바구니, 바로결제 통신 - post
   const goToCart = () => {
     if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
@@ -68,7 +67,6 @@ const ProductNameInfo = ({ productDetailData, apiUrl }) => {
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
           authorization: localStorage.getItem('TOKEN'),
-          // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
         },
         body: JSON.stringify({
           id,
@@ -88,38 +86,16 @@ const ProductNameInfo = ({ productDetailData, apiUrl }) => {
       <div className="productInfoTop">
         <div className="productNameWrap">
           <div className="productName">
-            <p>
-              {/*ProductName*/}
-              {name}
-            </p>
+            <p>{name}</p>
           </div>
           <div className="productItemDetail">
-            <div className="productItem">
-              {/*품목*/}
-              {typeName}
-            </div>
-            ,
-            <div className="productColor">
-              {/*색상*/}
-              {colorName}
-            </div>
-            ,
+            <div className="productItem">{typeName}</div>,
+            <div className="productColor">{colorName}</div>,
           </div>
           <div className="productLength">
-            <div className="productWidth">
-              {/*가로*/}
-              {width}
-            </div>
-            X
-            <div className="productDepth">
-              {/*세로*/}
-              {depth}
-            </div>
-            X
-            <div className="productHeight">
-              {/*높이*/}
-              {height}
-            </div>
+            <div className="productWidth">{width}</div>X
+            <div className="productDepth">{depth}</div>X
+            <div className="productHeight">{height}</div>
           </div>
           <div className="productPrice">
             <p className="productMoney">{Number(price).toLocaleString()}</p>
@@ -139,10 +115,7 @@ const ProductNameInfo = ({ productDetailData, apiUrl }) => {
         <div className="productReview">
           <p>상품평</p>
           <p>(</p>
-          <p>
-            {/*개수*/}
-            {totalReview}
-          </p>
+          <p>{totalReview}</p>
           <p>)</p>
         </div>
       </div>

@@ -10,14 +10,8 @@ const ProductDetailInfo = ({ productDetailData }) => {
     <div key={id} className="productDetailInfo">
       <h1>제품 설명</h1>
       <div className="productInfoContent">
-        <p className="productName">
-          {/*제품 이름*/}
-          {name}
-        </p>
-        <p>
-          {/*제품 설명........*/}
-          {description}
-        </p>
+        <p className="productName">{name}</p>
+        <p>{description}</p>
       </div>
       <div className="size">
         <p>치수</p>
@@ -39,20 +33,9 @@ const ProductDetailInfo = ({ productDetailData }) => {
       {isSizeInfo && (
         <div className="sizeToggle">
           <div className="productLength">
-            <p className="productWidth">
-              {/*가로*/}
-              {width}
-            </p>
-            X
-            <p className="productDepth">
-              {/*세로*/}
-              {depth}
-            </p>
-            X
-            <p className="productHeight">
-              {/*높이*/}
-              {height}
-            </p>
+            <p className="productWidth">{width}</p>X
+            <p className="productDepth">{depth}</p>X
+            <p className="productHeight">{height}</p>
           </div>
         </div>
       )}

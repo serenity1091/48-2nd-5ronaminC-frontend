@@ -8,7 +8,7 @@ const CartListCheck = ({ cartInfoData }) => {
         return (
           <div className="cartListRow" key={tab.productId}>
             <div className="cartImg">
-              <img src="images/desk.jpg" alt="장바구니 제품 사진" />
+              <img src={tab.productImageUrl} alt="장바구니 제품 사진" />
             </div>
             <div className="cartListInfo">
               <div className="cartListProductName">

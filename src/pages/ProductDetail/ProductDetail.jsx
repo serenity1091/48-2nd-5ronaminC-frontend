@@ -59,7 +59,6 @@ const ProductDetail = () => {
       <div className="productDetailAll">
         <div className="productImages">
           <ProductImages
-            key={productDetailData.id}
             productImages={productDetailData.imageUrl.split(',')}
           />
         </div>
